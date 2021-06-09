@@ -2,6 +2,7 @@ import numpy as qk
 import matplotlib.pyplot as plt
 import sys
 import argparse
+import os
 
 
 def random_trace_processing(num=2000, sim_init_filename='data_hd_0001_2000.txt',
@@ -118,15 +119,16 @@ def main(num_traces, rd_in, rd_out, sf_in, sf_out, t_calc_out):
     compute_traces(num=num_traces, rd_filename=rd_out, sf_filename=sf_out, out_filename=t_calc_out)
 
 if __name__ == "__main__":
+    sep = os.path.sep
     try:
         parser = argparse.ArgumentParser()
         parser.add_argument('--random_out_filename', action='store', type=str, default='rd_trace.txt',
                             help='path to input timing file')
-        parser.add_argument('--random_init_filename', action='store', type=str, default='rand_data_hd_0001_2000.txt',
+        parser.add_argument('--random_init_filename', action='store', type=str, default='..'+sep+'Step_4'+sep+'rand_data_hd_0001_2000.txt',
                             help='path to input timing file')
         parser.add_argument('--semifixed_out_filename', action='store', type=str, default='sf_trace.txt',
                             help='path to input timing file')
-        parser.add_argument('--semifixed_init_filename', action='store', type=str, default='semi_data_hd_0001_2000.txt',
+        parser.add_argument('--semifixed_init_filename', action='store', type=str, default='..'+sep+'Step_4'+sep+'semi_data_hd_0001_2000.txt',
                             help='path to input timing file')
         parser.add_argument('--t_calc_out_filename', action='store', type=str, default='t_calcs.txt',
                             help='path to input timing file')

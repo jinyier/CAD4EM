@@ -1,5 +1,6 @@
 import sys
 import argparse
+import os
 
 def netlist_preprocess (timing_filename='tb_time_impl.v', preprocessed_filename="timing_preprocessed.txt"):
     '''
@@ -293,9 +294,10 @@ def main(timing, pre, raw_targs, reg, fan, tb_in, tb_out, plain_text_path, semif
 
 
 if __name__ == "__main__":
+    sep = os.path.sep
     try:
         parser = argparse.ArgumentParser()
-        parser.add_argument('--timing_filename', action='store', type=str, default='synthed.v',
+        parser.add_argument('--timing_filename', action='store', type=str, default='..'+sep+'Step_2'+sep+'synthed.v',
                             help='path to input timing file')
         parser.add_argument('--preprocessed_filename', action='store', type=str, default="timing_preprocessed.txt",
                             help='path to output preprocessed file')
@@ -305,7 +307,7 @@ if __name__ == "__main__":
                             help='path to output register file')
         parser.add_argument('--fanout_filename', action='store', type=str, default='20190920_FF_FANOUT.txt',
                             help='path to output fanout file')
-        parser.add_argument('--testbench_in_filename', action='store', type=str, default='tb.v',
+        parser.add_argument('--testbench_in_filename', action='store', type=str, default='..'+sep+'Step_2'+sep+'tb.v',
                             help='path to input tb file')
         parser.add_argument('--testbench_out_filename', action='store', type=str, default='tb_sim.v',
                             help='path to output tb file')
